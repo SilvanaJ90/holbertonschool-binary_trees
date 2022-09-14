@@ -7,35 +7,28 @@
  * Return: pointer to newNode or NULL on failure
  */
 
+/* elementos menores a la raiz van al lado izq */
+
 binary_tree_t *binary_tree_insert_left(binary_tree_t *parent, int value)
 {
-	binary_tree_t *newNodeLef = NULL;
-	return (newNodeLef);
+	binary_tree_t *tree = NULL, *newNode = binary_tree_node(parent, value);
 
-
-		binary_tree_t *newNode = NULL, *p, *q;
-
-	if (parent == NULL)
+	if (tree == NULL)
 	{
-		parent = create_node();
-		parent->n = value;
+		tree = newNode;
 		return (NULL);
 	}
-	p = parent;
-	while (p != NULL)
-	{
-		q = p;
-		if (value < p->n)
-			p = p->left;
-		else
-			p = p->right;
-	}
-	p = newNode;
-	p->n = value;
-	if (value < q->n)
-		q->left = p;
 	else
-		q->right = p;
-	return (NULL);
+	{
+		int root = tree->n;
 
+		if (value < root && parent != NULL)
+		{
+			binary_tree_insert_left(tree->left, value);
+		}
+		else {
+			return (NULL);
+		}
+	}
+	return (newNode);
 }
