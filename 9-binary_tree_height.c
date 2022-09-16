@@ -11,6 +11,9 @@ size_t binary_tree_height(const binary_tree_t *tree)
 	int lDepth;
 	int rDepth;
 
+	if (tree == NULL)
+		return (-1);
+
 	if (tree)
 	{
 		lDepth = binary_tree_height(tree->left);
@@ -20,5 +23,5 @@ size_t binary_tree_height(const binary_tree_t *tree)
 		else
 			return (rDepth + 1);
 	}
-	return (-1);
+	return (0);
 }
